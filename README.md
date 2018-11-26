@@ -12,10 +12,9 @@ import `NgrxHelperModule.forRoot()` in app.module along with other ngrx modules.
 
 ### Effects
 
-The helper class `NgrxEffect` simplifies the effect configuration.
-It lets you configure effects with minimal inputs such as action, endpint and http method.
+The helper class `NgrxEffect` simplifies the effect configuration. It lets you configure effects with minimal inputs such as action, endpint and http method.
 
-```ts
+```typescript
 @Injectable()
 export class UserEffects extends NgrxEffect {
 
@@ -34,17 +33,17 @@ export class UserEffects extends NgrxEffect {
 }
 ```
 
-Every effect emits three actions (*_RESOLVING, *_RESOLVED, *_ERROR) as follows.
+Every effect emits three actions \(_\_RESOLVING,_ \_RESOLVED, \*\_ERROR\) as follows.
 
-* **GET_USER_RESOLVING**: emitted immediately when the action GET_USER dispatched which helps setting corresponding loaders.
-* **GET_USER_RESOLVED**: emitted when the api gets successfully resolved.
-* **GET_USER_ERROR**: emitted when api fails with 4XX or 5XX status codes.
+* **GET\_USER\_RESOLVING**: emitted immediately when the action GET\_USER dispatched which helps setting corresponding loaders.
+* **GET\_USER\_RESOLVED**: emitted when the api gets successfully resolved.
+* **GET\_USER\_ERROR**: emitted when api fails with 4XX or 5XX status codes.
 
 **Note:** endpint can be configured with params which can be sent at the time of dispatching action.
 
 ### Reducer
 
-```ts
+```typescript
 export interface UserState {
   readonly userInfo: NgrxObject<any>;
 }
@@ -75,7 +74,7 @@ export function UserReducer(state = defaultState, action) {
 
 ### Dispatch action
 
-```ts
+```typescript
 this.store.dispatch({
   type: APP_ACTIONS.GET_USER,
   payload: {
@@ -89,7 +88,7 @@ this.store.dispatch({
 
 Subscriptions are simplified by extending the component from the helper class `NgrxStoreSubscription`.
 
-```ts
+```typescript
 export class AppComponent extends NgrxStoreSubscription implements OnInit {
   userInfo = {};
 
@@ -115,7 +114,7 @@ export class AppComponent extends NgrxStoreSubscription implements OnInit {
 
 Every reducer gets resolved with data with the following format.
 
-```ts
+```typescript
 {
   state: DATA_STATE, // which can be RESOLVING, RESOLVED, ERROR
   data: any, // data which is set in the reducer
@@ -124,7 +123,7 @@ Every reducer gets resolved with data with the following format.
 
 This format helps us set the appropriate view in the component template.
 
-```html
+```markup
 <div [ngrxView]="userInfo.state">
   <div *ngrxViewResolving>Loading...</div>
   <div *ngrxViewError>Error fetching user info</div>
@@ -138,15 +137,15 @@ with the help of directives, component automatically responds based on the state
 
 ### Summary
 
-When the action *GET_USER* gets dispatched
+When the action _GET\_USER_ gets dispatched
 
-* it emits **GET_USER_RESOLVING**
+* it emits **GET\_USER\_RESOLVING**
   * which will set the `state` in store to 'RESOLVING'
-  * the component will render ***ngrxViewResolving**. (a loader screen)
-* if api call fails, it emits **GET_USER_ERROR**
+  * the component will render **\*ngrxViewResolving**. \(a loader screen\)
+* if api call fails, it emits **GET\_USER\_ERROR**
   * which will set the `state` in store to 'RESOLVED'
-  * the component will render ***ngrxViewError**. (error screen)
-* if api call fails, it emits **GET_USER_RESOLVED**
+  * the component will render **\*ngrxViewError**. \(error screen\)
+* if api call fails, it emits **GET\_USER\_RESOLVED**
   * which will set the `state` in store to 'RESOLVED'
-  * the component will render ***ngrxViewResolved**. (appropriate UI for user data)
+  * the component will render **\*ngrxViewResolved**. \(appropriate UI for user data\)
 
