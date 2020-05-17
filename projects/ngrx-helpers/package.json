@@ -1,9 +1,10 @@
 {
   "name": "ngrx-helpers",
   "description": "A library to simplify ngrx implementation in Angular Apps",
-  "version": "1.0.2",
+  "version": "8.0.0",
   "author": "Madhusudhana Dollu <madhusudhan.dollu@gmail.com>",
   "license": "MIT",
+  "main": "src/public_api.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/madhusudhand/ngrx-helpers.git"
@@ -18,11 +19,9 @@
     "rxjs"
   ],
   "peerDependencies": {
-    "@angular/common": "^6.0.0",
-    "@angular/core": "^6.0.0",
-    "@ngrx/effects": "^6.1.0",
-    "@ngrx/store": "^6.1.0",
-    "rxjs": "^6.3.0"
+    "@ngrx/effects": "^8.2.0",
+    "@ngrx/store": "^8.2.0",
+    "rxjs": "^6.5.2"
   },
   "dependencies": {
     "lodash.clonedeep": "~4.5.0"
