@@ -32,7 +32,7 @@ import { NgrxViewInvalidDirective } from './directives/view-invalid.directive';
 export class NgrxHelperModule {
   static forRoot(
     config?: any,
-  ): ModuleWithProviders {
+  ): ModuleWithProviders<NgrxHelperModule> {
     return {
       ngModule: NgrxHelperModule,
       providers: [NgrxHelperService, { provide: HELPER_CONFIG, useValue: config }]
